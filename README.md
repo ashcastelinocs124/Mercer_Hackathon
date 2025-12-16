@@ -31,10 +31,18 @@ We conducted a rigorous benchmark of multiple models, ensuring no data leakage o
     3. Train an independent XGBoost model.
     4. Average the predictions of all 5 models on the Test set.
 
-## Files
+## Project Structure
+
+### `main/` (Production Code)
 - `code.py`: **Main production script**. Runs the end-to-end 5-Fold Ensemble and generates `submission_with_risk.csv`.
-- `model_comparison.py`: Benchmark script comparing XGBoost, LightGBM, Random Forest, and Logistic Regression without data leakage.
+- `fine_tune_model.py`: Script for fine-tuning.
+- Data Files: `social_graph.csv`, `train.csv`, `test.csv`.
+
+### `benchmark/` (Analysis & Verification)
+- `model_comparison.py`: Benchmark script comparing XGBoost, LightGBM, Random Forest, and Logistic Regression.
 - `xgboost_kfold.py`: Validation script confirming the robust MSE of 0.1001.
+
+### `other_models/` (Experiments)
 - `run_lgbm.py`: Independent run script for LightGBM.
 
 ## How to Run
@@ -44,6 +52,7 @@ We conducted a rigorous benchmark of multiple models, ensuring no data leakage o
    ```
 2. Run the main script:
    ```bash
+   cd main
    python code.py
    ```
-   Output will be saved to `submission_with_risk.csv`.
+   Output will be saved to `main/submission_with_risk.csv`.
